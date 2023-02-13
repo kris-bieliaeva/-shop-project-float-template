@@ -159,6 +159,7 @@ body {
   position: absolute;
   text-align: left;
   display: none;
+  z-index: 999;
 }
 
 .submenu li {
@@ -344,6 +345,10 @@ body {
   background: url(images/arrow-left.png) no-repeat center;
   width: 55px;
   height: 55px;
+}
+
+.slick-list {
+  height: 100%;
 }
 
 /* filter */
