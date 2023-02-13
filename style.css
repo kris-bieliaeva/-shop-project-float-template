@@ -284,10 +284,66 @@ body {
 
 /* slider */
 
-.slider {
-  height: 400px;
+.slider-box {
   background-color: rgba(0, 0, 0, 0.2);
   border-bottom: 3px solid white;
+}
+
+.slider {
+  height: 400px;
+  text-align: center;
+}
+
+.slide-title {
+  font-size: 100px;
+  color: white;
+  font-weight: 100;
+  margin-top: 150px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #fff;
+}
+
+.slick-dots li button:before {
+  color: #fff;
+}
+
+.slick-dots {
+  bottom: 0;
+}
+
+.slick-dots li.slick-active button:before {
+  border: 1px solid #fff;
+  background-color: #fff;
+  content: "";
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+}
+
+.slick-dots li button:before {
+  border: 1px solid #fff;
+  content: "";
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+}
+
+.slick-next:before {
+  content: "";
+  display: block;
+  background: url(images/arrow-right.png) no-repeat center;
+  width: 55px;
+  height: 55px;
+}
+
+.slick-prev:before {
+  content: "";
+  display: block;
+  background: url(images/arrow-left.png) no-repeat center;
+  width: 55px;
+  height: 55px;
 }
 
 /* filter */
@@ -428,6 +484,7 @@ input[type="checkbox"] {
   top: 40px;
 }
 
+.like-icon:hover,
 .like-icon-clicked {
   background-image: url(images/like-white.png);
   background-color: #2c71b8;
@@ -507,4 +564,55 @@ input[type="checkbox"] {
   float: right;
   margin-right: 10px;
   margin-top: 2px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+}
+
+.modal-block {
+  width: 500px;
+  height: 300px;
+  margin: 80px auto;
+  background-color: #fff;
+  border: 1px solid grey;
+  padding: 15px;
+}
+
+.modal-title {
+  color: #2c71b8;
+}
+
+.form-field {
+  margin: 10px 0;
+}
+
+.form-field input {
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #2c71b8;
+}
+
+.btn-close {
+  text-align: right;
+  cursor: pointer;
+  color: #2c71b8;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
 }
