@@ -538,6 +538,33 @@ input[type="checkbox"] {
   text-align: center;
 }
 
+.product-quantity {
+  max-width: 210px;
+  margin: auto;
+}
+
+.product-quantity input {
+  width: 82px;
+  margin: 0px 10px 20px 10px;
+  height: 50px;
+  text-align: center;
+  font-weight: 600;
+  color: #2c71b8;
+  border: 3px solid #fff;
+}
+
+.product-quantity input:focus {
+  outline: none;
+}
+
+.increment-btn,
+.decrement-btn {
+  width: 50px;
+  height: 50px;
+  background-color: #2c71b8;
+  border: 1px solid white;
+  color: #fff;
+}
 .details,
 .add-to-cart {
   height: 50px;
@@ -620,4 +647,14 @@ input[type="checkbox"] {
 
 .show {
   display: block;
+}
+
+button:disabled,
+button[disabled] {
+  background-color: rgba(43, 113, 183, 0.75);
+  color: rgba(255, 255, 255, 0.2);
+}
+
+button {
+  cursor: pointer;
 }

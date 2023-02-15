@@ -65,3 +65,47 @@ $(".slider").slick({
 
 // AOS
 AOS.init();
+
+// increment/decrement buttons
+let decrementBtns = document.querySelectorAll(".decrement-btn");
+let incrementBtns = document.querySelectorAll(".increment-btn");
+
+incrementBtns.forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    let quantityInput = btn.parentNode.querySelector("input");
+    let currentValue = +quantityInput.value;
+    let nextValue = currentValue + 1;
+
+    if (nextValue >= 10) {
+      btn.disabled = true;
+    }
+
+    quantityInput.value = nextValue;
+
+    if (nextValue > 1) {
+      decrementBtns.forEach(function (btn) {
+        btn.disabled = false;
+      });
+    }
+  });
+});
+
+decrementBtns.forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    let quantityInput = btn.parentNode.querySelector("input");
+    let currentValue = +quantityInput.value;
+    let nextValue = currentValue - 1;
+
+    if (nextValue < 1) {
+      btn.disabled = true;
+    }
+
+    quantityInput.value = nextValue;
+
+    if (nextValue < 10) {
+      incrementBtns.forEach(function (btn) {
+        btn.disabled = false;
+      });
+    }
+  });
+});
