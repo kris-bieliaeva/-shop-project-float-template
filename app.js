@@ -67,45 +67,98 @@ $(".slider").slick({
 AOS.init();
 
 // increment/decrement buttons
+
 let decrementBtns = document.querySelectorAll(".decrement-btn");
 let incrementBtns = document.querySelectorAll(".increment-btn");
+let quantityInput = document.querySelectorAll(".product-quantity input");
 
-incrementBtns.forEach(function (btn) {
-  btn.addEventListener("click", function () {
-    let quantityInput = btn.parentNode.querySelector("input");
-    let currentValue = +quantityInput.value;
-    let nextValue = currentValue + 1;
+function Counter(
+  incrementBtn,
+  decrementBtn,
+  inputField,
+  minCount = 1,
+  maxCount = 5
+) {
+  this.domRefs = {
+    incrementBtn: incrementBtn,
+    decrementBtn: decrementBtn,
+    inputField: inputField,
+  };
 
-    if (nextValue >= 10) {
-      btn.disabled = true;
-    }
+  this.toggleButtonState = function () {
+    let count = this.domRefs.inputField.value;
+    this.domRefs.decrementBtn.disabled = count <= minCount;
+    this.domRefs.incrementBtn.disabled = count >= maxCount;
+  };
 
-    quantityInput.value = nextValue;
+  this.toggleButtonState();
 
-    if (nextValue > 1) {
-      decrementBtns.forEach(function (btn) {
-        btn.disabled = false;
-      });
-    }
-  });
-});
+  this.increment = function () {
+    this.domRefs.inputField.value = +this.domRefs.inputField.value + 1;
+    this.toggleButtonState();
+  };
 
-decrementBtns.forEach(function (btn) {
-  btn.addEventListener("click", function () {
-    let quantityInput = btn.parentNode.querySelector("input");
-    let currentValue = +quantityInput.value;
-    let nextValue = currentValue - 1;
+  this.decrement = function () {
+    this.domRefs.inputField.value = +this.domRefs.inputField.value - 1;
+    this.toggleButtonState();
+  };
 
-    if (nextValue < 1) {
-      btn.disabled = true;
-    }
+  this.domRefs.incrementBtn.addEventListener(
+    "click",
+    this.increment.bind(this)
+  );
 
-    quantityInput.value = nextValue;
+  this.domRefs.decrementBtn.addEventListener(
+    "click",
+    this.decrement.bind(this)
+  );
+}
 
-    if (nextValue < 10) {
-      incrementBtns.forEach(function (btn) {
-        btn.disabled = false;
-      });
-    }
-  });
-});
+for (let i = 0; i < incrementBtns.length; i++) {
+  let counter1 = new Counter(
+    incrementBtns[i],
+    decrementBtns[i],
+    quantityInput[i]
+  );
+  console.log(counter1);
+}
+
+// incrementBtns.forEach(function (btn) {
+//   btn.addEventListener("click", function () {
+//     let quantityInput = btn.parentNode.querySelector("input");
+//     let currentValue = +quantityInput.value;
+//     let nextValue = currentValue + 1;
+
+//     if (nextValue >= 10) {
+//       btn.disabled = true;
+//     }
+
+//     quantityInput.value = nextValue;
+
+//     if (nextValue > 1) {
+//       decrementBtns.forEach(function (btn) {
+//         btn.disabled = false;
+//       });
+//     }
+//   });
+// });
+
+// decrementBtns.forEach(function (btn) {
+//   btn.addEventListener("click", function () {
+//     let quantityInput = btn.parentNode.querySelector("input");
+//     let currentValue = +quantityInput.value;
+//     let nextValue = currentValue - 1;
+
+//     if (nextValue < 1) {
+//       btn.disabled = true;
+//     }
+
+//     quantityInput.value = nextValue;
+
+//     if (nextValue < 10) {
+//       incrementBtns.forEach(function (btn) {
+//         btn.disabled = false;
+//       });
+//     }
+//   });
+// });
