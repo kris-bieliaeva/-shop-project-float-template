@@ -42,11 +42,15 @@ moreDetailsBtn.forEach((item) => {
 
 const pageHeight = document.body.scrollHeight;
 const halfPage = pageHeight / 2;
-window.addEventListener("scroll", function () {
+
+function scrollHalfPage() {
   if (window.scrollY >= halfPage) {
     openModal();
+    window.removeEventListener("scroll", scrollHalfPage);
   }
-});
+}
+
+window.addEventListener("scroll", scrollHalfPage);
 
 closeBtn.addEventListener("click", closeModal);
 
@@ -58,3 +62,6 @@ $(".slider").slick({
   autoplay: true,
   autoplaySpeed: 1000,
 });
+
+// AOS
+AOS.init();
